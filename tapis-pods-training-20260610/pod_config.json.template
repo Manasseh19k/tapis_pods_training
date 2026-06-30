@@ -1,0 +1,31 @@
+# Tapis Pod Deployment Configuration Template
+# Copy this to pod_config.json and customize for your deployment
+
+{
+  "volume": {
+    "id": "franktutorialhelloworldhtml",
+    "description": "Hello World HTML",
+    "html_file": "index.html"
+  },
+  "pod": {
+    "id": "franktutorialhelloworld",
+    "image": "nginx",
+    "description": "Hello World Pod"
+  },
+  "networking": {
+    "default": {
+      "protocol": "http",
+      "port": 80
+    }
+  },
+  "volume_mounts": {
+    "/usr/share/nginx/html/index.html": {
+      "type": "tapisvolume",
+      "source_id": "franktutorialhelloworldhtml",
+      "sub_path": "index.html"
+    }
+  },
+  "tapis": {
+    "base_url": "https://tacc.tapis.io"
+  }
+}

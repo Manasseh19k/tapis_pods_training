@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.python-version
+my_chroma_db/
+*.ipynb
+.ipynb_checkpoints/
+anaconda_projects/
+node_modules/
