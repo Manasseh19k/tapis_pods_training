@@ -1,0 +1,25 @@
+services:
+  fastapi:
+    build:
+      context: ./tapis-pods-training-20260610
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./tapis-pods-training-20260610/.env
+    volumes:
+      - chroma_data:/app/my_chroma_db
+    restart: unless-stopped
+
+  nextjs:
+    build:
+      context: ./my-copilot-app
+    ports:
+      - "3000:3000"
+    environment:
+      - FASTAPI_URL=http://fastapi:8000
+    depends_on:
+      - fastapi
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
